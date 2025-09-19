@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammad Raza - Flutter Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Enhanced color palette for attraction */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --premium-gradient: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --flutter-gradient: linear-gradient(135deg, #02569B 0%, #54C5F8 100%);
+            --ios-gradient: linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%);
+            --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --orange-gradient: linear-gradient(135deg, #FFA726 0%, #FF7043 100%);
+            --teal-gradient: linear-gradient(135deg, #00BCD4 0%, #009688 100%);
+            --pink-gradient: linear-gradient(135deg, #E91E63 0%, #F06292 100%);
+
+            /* iOS-inspired colors */
+            --ios-blue: #007AFF;
+            --ios-green: #34C759;
+            --ios-orange: #FF9500;
+            --ios-red: #FF3B30;
+            --ios-purple: #AF52DE;
+            --ios-pink: #FF2D92;
+            --ios-yellow: #FFCC00;
+            --ios-indigo: #5856D6;
+
+            /* Background colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass-light: rgba(255, 255, 255, 0.12);
+            --bg-card: rgba(26, 26, 36, 0.8);
+
+            /* Text colors */
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-accent: #54C5F8;
+
+            /* Border and shadow */
+            --border-subtle: rgba(255, 255, 255, 0.12);
+            --border-accent: rgba(84, 197, 248, 0.4);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(84, 197, 248, 0.3);
+            --shadow-ios: 0 10px 30px rgba(0, 122, 255, 0.3);
+
+            /* Border radius */
+            --radius: 20px;
+            --radius-lg: 28px;
+            --radius-ios: 22px;
+
+            /* Transitions */
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.2s ease;
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced iOS-style Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1rem 2.5rem;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass-light);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--border-accent);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.4rem;
+            background: var(--flutter-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: var(--radius);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+            background: var(--bg-glass);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Hero Section with iOS Mobile */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #54C5F8 50%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* iOS-style Mobile Showcase */
+        .mobile-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .iphone-container {
+            position: relative;
+            width: 320px;
+            height: 650px;
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow:
+                0 0 0 2px #404040,
+                0 25px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .iphone-container:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow:
+                0 0 0 2px #54C5F8,
+                0 35px 100px rgba(84, 197, 248, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 42px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* iOS Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 32px;
+            background: #000;
+            border-radius: 16px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* iOS Wallpaper Background */
+        .ios-wallpaper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--flutter-gradient);
+            opacity: 0.9;
+        }
+
+        .ios-wallpaper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        /* iOS Status Bar */
+        .ios-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 20px 15px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 5;
+        }
+
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .battery-icon {
+            width: 24px;
+            height: 12px;
+            border: 1px solid white;
+            border-radius: 2px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .battery-icon::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 3px;
+            width: 2px;
+            height: 6px;
+            background: white;
+            border-radius: 0 1px 1px 0;
+        }
+
+        .battery-fill {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            bottom: 1px;
+            width: 70%;
+            background: var(--ios-green);
+            border-radius: 1px;
+        }
+
+        /* iOS App Icons Grid */
+        .ios-home-screen {
+            flex: 1;
+            padding: 30px 25px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .ios-app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: var(--transition-bounce);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ios-app-icon:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .ios-app-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            border-radius: inherit;
+        }
+
+        /* Featured app with special animation */
+        .featured-app {
+            grid-column: span 2;
+            grid-row: span 2;
+            width: 140px;
+            height: 140px;
+            border-radius: 30px;
+            background: var(--flutter-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse-glow 3s infinite;
+            position: relative;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 5px 15px rgba(0, 0, 0, 0.3),
+                    0 0 0 0 rgba(84, 197, 248, 0.7);
+            }
+
+            50% {
+                box-shadow:
+                    0 10px 25px rgba(0, 0, 0, 0.4),
+                    0 0 0 10px rgba(84, 197, 248, 0);
+            }
+        }
+
+        .featured-app .app-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        /* iOS Dock */
+        .ios-dock {
+            position: absolute;
+            bottom: 30px;
+            left: 25px;
+            right: 25px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+            z-index: 5;
+        }
+
+        .dock-app {
+            width: 50px;
+            height: 50px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: var(--transition-bounce);
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .dock-app:hover {
+            transform: scale(1.2) translateY(-8px);
+        }
+
+        /* Floating Elements Enhancement */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-code {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(84, 197, 248, 0.4);
+            animation: float-code 8s ease-in-out infinite;
+        }
+
+        .floating-icon {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            animation: float-icon 6s ease-in-out infinite;
+        }
+
+        @keyframes float-code {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float-icon {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-25px) scale(1.1);
+            }
+        }
+
+        /* Enhanced CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-primary {
+            background: var(--flutter-gradient);
+            color: white;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .btn-secondary {
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 15px 35px rgba(84, 197, 248, 0.4);
+        }
+
+        /* Enhanced Code Block */
+        .code-snippet {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-accent);
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .code-snippet::before {
+            content: 'Flutter/Dart';
+            position: absolute;
+            top: 0.8rem;
+            right: 1.5rem;
+            background: var(--flutter-gradient);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Enhanced Stats Section */
+        .stats {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 4s infinite;
+        }
+
+        .stat-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--flutter-gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--border-accent);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--text-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Enhanced Tech Stack with IoT */
+
+        .tech-stack {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-stack::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    transparent 70%);
+            animation: shimmer 4s infinite;
+        }
+
+        /* make grid like stats */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        /* make cards consistent with stat-cards */
+        .tech-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--flutter-gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .tech-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--border-accent);
+        }
+
+        /* icons same as stats */
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--text-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .tech-level {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .iphone-container {
+                width: 280px;
+                height: 570px;
+            }
+
+            .floating-elements {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                width: calc(100% - 20px);
+                padding: 1rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2.2rem, 4vw, 3rem);
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 3.5vw, 2.5rem);
+            }
+        }
+
+        /* Animation keyframes */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--flutter-gradient);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        /* Grid and container styles */
+        .app-grid,
+        .tech-grid,
+        .stats-grid,
+        .contact-cards {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .app-grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .contact-cards {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            margin-bottom: 3rem;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: var(--flutter-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects {
+            background: var(--bg-primary);
+        }
+
+        .section-dark {
+            background: var(--bg-secondary);
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--border-accent);
+        }
+
+        .app-header {
+            background: var(--purple-gradient);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+
+        .app-category-tag {
+            display: inline-block;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .app-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .app-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Completed .app- styles */
+        .app-content {
+            padding: 2.5rem;
+        }
+
+        .app-features {
+            margin: 2rem 0;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-tag {
+            background: var(--bg-glass);
+            color: var(--text-accent);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .app-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+
+        .store-button {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            min-height: 48px;
+            white-space: nowrap;
+        }
+
+        .store-button:hover {
+            background: var(--bg-glass-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .store-button.google-play {
+            border-color: var(--ios-green);
+            color: var(--ios-green);
+        }
+
+        .store-button.app-store {
+            border-color: var(--ios-blue);
+            color: var(--ios-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-flutter" style="margin-right: 0.5rem;"></i>
+                Hammad.dev
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Mobile App Developer</h1>
+                <div class="hero-subtitle">
+                    <i class="fab fa-flutter"></i>
+                    Flutter & IoT Solutions Expert
+                </div>
+                <p class="hero-description">
+                    Transforming innovative ideas into stunning cross-platform mobile applications.
+                    4+ years of expertise in Flutter development, IoT integration, and creating
+                    seamless user experiences that drive business growth.
+                </p>
+
+                <div class="code-snippet">
+                    <pre><code>class HammadRaza extends FlutterDeveloper {
+  final experience = '4+ years';
+  final appsPublished = 45;
+  final platforms = ['iOS', 'Android', 'Web', 'IoT'];
+  final expertise = ['Flutter', 'Dart', 'Firebase', 'IoT'];
+  
+  @override
+  Widget buildAmazingApps() {
+    return YourDreamApp();
+  }
+}</code></pre>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#apps" class="btn btn-primary">
+                        <i class="fas fa-mobile-alt"></i>
+                        View Portfolio
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-rocket"></i>
+                        Start Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-showcase">
+                <!-- Floating Elements -->
+                <div class="floating-elements">
+                    <div class="floating-code" style="top: 15%; right: 10%;">
+                        import 'package:flutter/material.dart';
+                    </div>
+                    <div class="floating-code" style="top: 25%; right: 5%;">
+                        class IoTDevice extends StatefulWidget
+                    </div>
+                    <div class="floating-code" style="top: 35%; right: 15%;">
+                        StreamBuilder&lt;SensorData&gt;()
+                    </div>
+
+                    <div class="floating-icon" style="top: 20%; left: 10%; background: var(--ios-gradient);">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="floating-icon" style="top: 40%; left: 5%; background: var(--success-gradient);">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <div class="floating-icon" style="top: 60%; left: 15%; background: var(--teal-gradient);">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="floating-icon" style="top: 10%; left: 20%; background: var(--orange-gradient);">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                </div>
+
+                <!-- iPhone Container -->
+                <div class="iphone-container">
+                    <div class="iphone-screen">
+                        <!-- Dynamic Island -->
+                        <div class="dynamic-island">
+                            <i class="fas fa-circle" style="color: #34C759; font-size: 0.5rem;"></i>
+                            <span style="margin-left: 5px;">9:41</span>
+                        </div>
+
+                        <!-- iOS Wallpaper -->
+                        <div class="ios-wallpaper"></div>
+
+                        <!-- iOS Status Bar -->
+                        <div class="ios-status-bar">
+                            <div class="status-left">
+                                <span>9:41</span>
+                            </div>
+                            <div class="status-right">
+                                <i class="fas fa-signal" style="font-size: 0.8rem;"></i>
+                                <i class="fas fa-wifi" style="font-size: 0.8rem;"></i>
+                                <div class="battery-icon">
+                                    <div class="battery-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- iOS Home Screen -->
+                        <div class="ios-home-screen">
+                            <!-- Row 1 -->
+
+                            <div class="ios-app-icon" style="background: var(--ios-gradient);">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--success-gradient);">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--orange-gradient);">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--pink-gradient);">
+                                <i class="fas fa-comments"></i>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="ios-app-icon" style="background: var(--purple-gradient);">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--teal-gradient);">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--premium-gradient);">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="ios-app-icon"
+                                style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+
+                            <!-- Featured App (spans 2x2) -->
+                            <div class="featured-app">
+                                <i class="fab fa-flutter"></i>
+                                <div class="app-label">My Latest<br>Flutter App</div>
+                            </div>
+
+                            <!-- IoT Apps -->
+                            <div class="ios-app-icon" style="background: var(--teal-gradient);">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="ios-app-icon"
+                                style="background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+
+                            <!-- More Apps -->
+                            <div class="ios-app-icon" style="background: var(--ios-gradient);">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--success-gradient);">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--orange-gradient);">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--purple-gradient);">
+                                <i class="fas fa-music"></i>
+                            </div>
+
+                            <!-- Bottom Row -->
+                            <div class="ios-app-icon" style="background: var(--pink-gradient);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--teal-gradient);">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--premium-gradient);">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="ios-app-icon" style="background: var(--flutter-gradient);">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+
+                        <!-- iOS Dock -->
+                        <div class="ios-dock">
+                            <div class="dock-app" style="background: var(--ios-blue);">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="dock-app" style="background: var(--success-gradient);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="dock-app" style="background: var(--flutter-gradient);">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                            <div class="dock-app" style="background: var(--orange-gradient);">
+                                <i class="fab fa-safari"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats">
+        <div class="container">
+            <h2 class="section-title">Developer Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fab fa-google-play"></i></div>
+                    <span class="stat-number" data-target="30">0</span>
+                    <div class="stat-label">Google Play Apps</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fab fa-app-store-ios"></i></div>
+                    <span class="stat-number" data-target="15">0</span>
+                    <div class="stat-label">App Store Apps</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <span class="stat-number" data-target="10">0</span>
+                    <div class="stat-label">K+ Active Users</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fas fa-wifi"></i></div>
+                    <span class="stat-number" data-target="8">0</span>
+                    <div class="stat-label">IoT Projects</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <span class="stat-number" data-target="4">0</span>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <!-- <div class="stat-card fade-in">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <span class="stat-number" data-target="100">0</span>
+                    <div class="stat-label">% Success Rate</div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="apps" class="section projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Mobile Apps & IoT Solutions</h2>
+            <div class="app-grid">
+
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--ios-blue);">
+                        <span class="app-category-tag">📚 Education</span>
+                        <h3 class="app-title">US Realty Training</h3>
+                        <p class="app-description">
+                            Education platform for real estate license preparation with progress sync and offline mode.
+                        </p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">License Prep</span>
+                                <span class="feature-tag">Progress Sync</span>
+                                <span class="feature-tag">Offline Mode</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> Helping thousands prepare for real estate exams</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.usrealtytraining.app"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                            <a href="https://apps.apple.com/eg/app/us-realty-training/id6474680536"
+                                class="store-button app-store">
+                                <i class="fab fa-app-store-ios"></i> App Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Spatz App -->
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--teal-gradient);">
+                        <span class="app-category-tag">⚕️ Health</span>
+                        <h3 class="app-title">The Spatz App</h3>
+                        <p class="app-description">
+                            Your personal companion throughout your weight loss journey with the Spatz Balloon. Track
+                            progress, stay connected with your doctor, and access helpful resources.
+                        </p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Progress Tracking</span>
+                                <span class="feature-tag">Doctor Check-ins</span>
+                                <span class="feature-tag">Appointments</span>
+                                <span class="feature-tag">Resources</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> Supporting healthy weight loss journeys worldwide</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.spatz_app"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transform -->
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--orange-gradient);">
+                        <span class="app-category-tag">🧠 Self-Improvement</span>
+                        <h3 class="app-title">Transform</h3>
+                        <p class="app-description">
+                            Transform helps you quit porn by breaking bad habits, building discipline, and reclaiming
+                            control of your life with structured plans and tools.
+                        </p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Habit Breaking</span>
+                                <span class="feature-tag">Daily Tools</span>
+                                <span class="feature-tag">Structured Plans</span>
+                                <span class="feature-tag">Personal Support</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> Helping users worldwide rebuild their lives</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.ch.give_up_sex"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-card fade-in">
+                    <div class="app-header">
+                        <span class="app-category-tag">📱 Telecommunications</span>
+                        <h3 class="app-title">Seyyah Mobile</h3>
+                        <p class="app-description">Revolutionary eSIM management platform for international travelers
+                        </p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">eSIM Management</span>
+                                <span class="feature-tag">Payment Gateway</span>
+                                <span class="feature-tag">Multi-Country</span>
+                                <span class="feature-tag">Real-time Sync</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> 15+ countries, 1,000+ active users</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.seyyahmobile"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                            <a href="https://apps.apple.com/us/app/seyyah-esim-for-tourists/id6476975210"
+                                class="store-button app-store">
+                                <i class="fab fa-app-store-ios"></i> App Store
+                            </a>
+
+                            <!-- <a href="#" class="store-button google-play">
+                                <i class="fab fa-google-play"></i>
+                                Google Play
+                            </a>
+                            <a href="#" class="store-button app-store">
+                                <i class="fab fa-app-store-ios"></i>
+                                App Store
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--teal-gradient);">
+                        <span class="app-category-tag">🏠 Smart IoT</span>
+                        <h3 class="app-title">Smart Home Control</h3>
+                        <p class="app-description">Complete IoT ecosystem for smart home automation and monitoring</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Device Control</span>
+                                <span class="feature-tag">Real-time Monitoring</span>
+                                <span class="feature-tag">Voice Commands</span>
+                                <span class="feature-tag">Energy Analytics</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> 500+ smart homes connected</p>
+                        <div class="app-links">
+                            <a href="#" class="store-button" style="background: var(--teal-gradient); color: white;">
+                                <i class="fas fa-home"></i>
+                                IoT Platform
+                            </a>
+                            <a href="#" class="store-button google-play">
+                                <i class="fab fa-google-play"></i>
+                                Mobile App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card fade-in">
+                    <div class="app-header">
+                        <span class="app-category-tag">🏥 Healthcare</span>
+                        <h3 class="app-title">Joy App</h3>
+                        <p class="app-description">Comprehensive healthcare ecosystem with telemedicine capabilities</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Appointments</span>
+                                <span class="feature-tag">Medicine Order</span>
+                                <span class="feature-tag">Blood Donation</span>
+                                <span class="feature-tag">Emergency Care</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> Connecting patients with healthcare providers</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.alrightech.ddf"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.alrighttech.joy"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play (Alt)
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--success-gradient);">
+                        <span class="app-category-tag">🌱 Agricultural IoT</span>
+                        <h3 class="app-title">Smart Farm Monitor</h3>
+                        <p class="app-description">IoT-powered agricultural monitoring system for optimal crop
+                            management</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Soil Sensors</span>
+                                <span class="feature-tag">Weather Tracking</span>
+                                <span class="feature-tag">Irrigation Control</span>
+                                <span class="feature-tag">Crop Analytics</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> 200+ farms automated, 30% yield increase</p>
+                        <div class="app-links">
+                            <a href="#" class="store-button" style="background: var(--success-gradient); color: white;">
+                                <i class="fas fa-seedling"></i>
+                                IoT Dashboard
+                            </a>
+                            <a href="#" class="store-button app-store">
+                                <i class="fab fa-app-store-ios"></i>
+                                Farm App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card fade-in">
+                    <div class="app-header">
+                        <span class="app-category-tag">💼 Enterprise</span>
+                        <h3 class="app-title">YcBuzz Communication</h3>
+                        <p class="app-description">Multi-platform corporate communication suite</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Real-time Chat</span>
+                                <span class="feature-tag">File Sharing</span>
+                                <span class="feature-tag">Team Collaboration</span>
+                                <span class="feature-tag">Cross-platform</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> 1,500+ employees across 4 companies</p>
+                        <div class="app-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.nsolbpo.chat"
+                                class="store-button google-play">
+                                <i class="fab fa-google-play"></i> Google Play
+                            </a>
+                            <a href="https://apps.apple.com/us/app/ycbuzz/id667440277741"
+                                class="store-button app-store">
+                                <i class="fab fa-app-store-ios"></i> App Store
+                            </a>
+
+                            <a href="https://ycbuzz.com/" class="store-button custom-gradient"
+                                style="background: var(--flutter-gradient); color: white;">
+                                <i class="fas fa-globe"></i> Web App
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card fade-in">
+                    <div class="app-header" style="background: var(--orange-gradient);">
+                        <span class="app-category-tag">🏭 Industrial IoT</span>
+                        <h3 class="app-title">Factory Monitor Pro</h3>
+                        <p class="app-description">Industrial IoT solution for machinery monitoring and predictive
+                            maintenance</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-features">
+                            <strong>Key Features:</strong>
+                            <div class="feature-list">
+                                <span class="feature-tag">Machine Learning</span>
+                                <span class="feature-tag">Predictive Analytics</span>
+                                <span class="feature-tag">Real-time Alerts</span>
+                                <span class="feature-tag">Maintenance Scheduling</span>
+                            </div>
+                        </div>
+                        <p><strong>Impact:</strong> 50+ factories, 40% downtime reduction</p>
+                        <div class="app-links">
+                            <a href="#" class="store-button" style="background: var(--orange-gradient); color: white;">
+                                <i class="fas fa-industry"></i>
+                                Industrial Hub
+                            </a>
+                            <a href="#" class="store-button google-play">
+                                <i class="fab fa-google-play"></i>
+                                Monitor App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="tech" class="section tech-stack">
+        <div class="container">
+            <h2 class="section-title fade-in">Technology Stack & Expertise</h2>
+            <div class="tech-grid">
+                <div class="tech-card featured fade-in">
+                    <div class="tech-icon"><i class="fab fa-flutter"></i></div>
+                    <div class="tech-name">Flutter & Dart</div>
+                    <div class="tech-level">Expert Level - Primary Stack</div>
+                </div>
+                <div class="tech-card iot fade-in">
+                    <div class="tech-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="tech-name">IoT Development</div>
+                    <div class="tech-level">Smart Devices & Sensors</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fab fa-android"></i></div>
+                    <div class="tech-name">Android Native</div>
+                    <div class="tech-level">Advanced</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fab fa-apple"></i></div>
+                    <div class="tech-name">iOS Development</div>
+                    <div class="tech-level">Advanced</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fas fa-fire"></i></div>
+                    <div class="tech-name">Firebase</div>
+                    <div class="tech-level">Expert Level</div>
+                </div>
+                <div class="tech-card iot fade-in">
+                    <div class="tech-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="tech-name">Arduino & ESP32</div>
+                    <div class="tech-level">Hardware Integration</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fas fa-database"></i></div>
+                    <div class="tech-name">State Management</div>
+                    <div class="tech-level">GetX, Provider, Bloc</div>
+                </div>
+                <div class="tech-card iot fade-in">
+                    <div class="tech-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <div class="tech-name">MQTT & WebSocket</div>
+                    <div class="tech-level">Real-time Communication</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="tech-name">Cloud Services</div>
+                    <div class="tech-level">AWS, Google Cloud</div>
+                </div>
+                <div class="tech-card iot fade-in">
+                    <div class="tech-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="tech-name">Sensor Integration</div>
+                    <div class="tech-level">Temperature, Humidity, Motion</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><i class="fas fa-desktop"></i></div>
+                    <div class="tech-name">Desktop Apps</div>
+                    <div class="tech-level">macOS, Windows, Linux</div>
+                </div>
+                <div class="tech-card iot fade-in">
+                    <div class="tech-icon"><i class="fas fa-home"></i></div>
+                    <div class="tech-name">Home Automation</div>
+                    <div class="tech-level">Smart Home Solutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="section contact" style="background: var(--bg-secondary);">
+
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">Let's Build Something Amazing</h2>
+                <p class="contact-intro fade-in">
+                    Ready to transform your mobile app or IoT idea into reality? Let's discuss your project
+                    and create innovative solutions that users will love. From Flutter apps to smart IoT systems,
+                    I'll guide you through every step of development.
+                </p>
+
+                <div class="contact-cards">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-title">Email Me</div>
+                        <div class="contact-details">ranahr5656@gmail.com</div>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-title">WhatsApp</div>
+                        <div class="contact-details">+92 317 655 8363</div>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-title">Location</div>
+                        <div class="contact-details">Islamabad, Pakistan</div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons fade-in">
+                    <a href="mailto:ranahr5656@gmail.com" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Start Your Project
+                    </a>
+                    <a href="https://wa.me/923176558363" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        Quick Chat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced scroll progress and navigation
+        const updateScrollProgress = () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        };
+
+        const updateNavbar = () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        };
+
+        const updateActiveNav = () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Enhanced counter animation
+        const animateCounter = (element, target, duration = 2000) => {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+
+                if (target >= 1000) {
+                    element.textContent = Math.floor(start / 1000) + 'K';
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        };
+
+        // Stats animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach((counter, index) => {
+                        const target = parseInt(counter.dataset.target);
+                        setTimeout(() => {
+                            animateCounter(counter, target);
+                        }, index * 100);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) statsObserver.observe(statsSection);
+
+        // Enhanced iPhone animations
+        const animateIPhoneApps = () => {
+            const apps = document.querySelectorAll('.ios-app-icon, .dock-app');
+            apps.forEach((app, index) => {
+                setTimeout(() => {
+                    app.style.animation = `bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${index * 0.1}s`;
+                }, 1000);
+            });
+
+            // Animate featured app
+            const featuredApp = document.querySelector('.featured-app');
+            if (featuredApp) {
+                setInterval(() => {
+                    featuredApp.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        featuredApp.style.transform = 'scale(1)';
+                    }, 200);
+                }, 3000);
+            }
+        };
+
+        // Enhanced mobile interactions
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.ios-app-icon, .dock-app, .app-card, .tech-card').forEach(element => {
+                element.addEventListener('touchstart', () => {
+                    element.style.transform = 'scale(0.95)';
+                });
+
+                element.addEventListener('touchend', () => {
+                    element.style.transform = '';
+                });
+            });
+        }
+
+        // Throttled scroll handler
+        let ticking = false;
+        const handleScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNavbar();
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        // Event listeners
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateNavbar();
+            updateActiveNav();
+            animateIPhoneApps();
+        });
+
+        // Enhanced fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            .fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            @keyframes bounce {
+                0% { transform: scale(0) rotate(180deg); opacity: 0; }
+                50% { transform: scale(1.2) rotate(90deg); opacity: 0.8; }
+                100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            }
+            
+            .app-content {
+                padding: 2.5rem;
+            }
+            
+            .app-features {
+                margin: 2rem 0;
+            }
+            
+            .feature-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                margin-top: 1.5rem;
+            }
+            
+            .feature-tag {
+                background: var(--bg-glass);
+                color: var(--text-accent);
+                padding: 0.4rem 1rem;
+                border-radius: var(--radius);
+                font-size: 0.85rem;
+                font-weight: 600;
+                border: 1px solid var(--border-subtle);
+            }
+            
+            .app-links {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .store-button {
+                flex: 1;
+                background: var(--bg-tertiary);
+                color: var(--text-primary);
+                padding: 1rem 1.5rem;
+                border-radius: var(--radius);
+                text-decoration: none;
+                text-align: center;
+                font-weight: 700;
+                font-size: 0.95rem;
+                transition: var(--transition-fast);
+                border: 1px solid var(--border-subtle);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+            
+            .store-button:hover {
+                background: var(--bg-glass-light);
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-soft);
+            }
+            
+            .store-button.google-play {
+                border-color: var(--ios-green);
+                color: var(--ios-green);
+            }
+            
+            .store-button.app-store {
+                border-color: var(--ios-blue);
+                color: var(--ios-blue);
+            }
+            
+            .contact {
+                position: relative;
+            }
+            
+            .contact-content {
+                text-align: center;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            
+            .contact-intro {
+                font-size: 1.3rem;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 4rem;
+                line-height: 1.8;
+                font-weight: 400;
+            }
+            
+            .contact-card {
+                background: var(--bg-glass);
+                backdrop-filter: blur(30px);
+                border: 1px solid var(--border-subtle);
+                border-radius: var(--radius);
+                padding: 2.5rem;
+                transition: var(--transition);
+                text-align: center;
+            }
+            
+            .contact-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-glow);
+                border-color: var(--border-accent);
+            }
+            
+            .contact-icon {
+                font-size: 2.5rem;
+                color: var(--text-accent);
+                margin-bottom: 1.5rem;
+            }
+            
+            .contact-title {
+                font-weight: 700;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                color: var(--text-primary);
+            }
+            
+            .contact-details {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 1.1rem;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Copy code functionality
+        document.querySelectorAll('.code-snippet').forEach(codeBlock => {
+            codeBlock.style.cursor = 'pointer';
+            codeBlock.title = 'Click to copy code';
+
+            codeBlock.addEventListener('click', () => {
+                const code = codeBlock.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    // Create and show feedback
+                    const feedback = document.createElement('div');
+                    feedback.textContent = '✅ Code copied to clipboard!';
+                    feedback.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: var(--success-gradient);
+                        color: white;
+                        padding: 1.5rem 2.5rem;
+                        border-radius: var(--radius);
+                        z-index: 9999;
+                        font-weight: 700;
+                        font-size: 1.1rem;
+                        box-shadow: var(--shadow-strong);
+                        animation: slideIn 0.3s ease-out;
+                    `;
+
+                    const slideInKeyframes = `
+                        @keyframes slideIn {
+                            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                        }
+                    `;
+
+                    if (!document.querySelector('#slideInAnimation')) {
+                        const animationStyle = document.createElement('style');
+                        animationStyle.id = 'slideInAnimation';
+                        animationStyle.textContent = slideInKeyframes;
+                        document.head.appendChild(animationStyle);
+                    }
+
+                    document.body.appendChild(feedback);
+                    setTimeout(() => {
+                        feedback.style.animation = 'slideIn 0.3s ease-out reverse';
+                        setTimeout(() => feedback.remove(), 300);
+                    }, 2000);
+                });
+            });
+        });
+
+        // Enhanced app icon interactions
+        const appIcons = document.querySelectorAll('.ios-app-icon, .dock-app');
+        appIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+
+                const rect = icon.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (rect.width / 2 - size / 2) + 'px';
+                ripple.style.top = (rect.height / 2 - size / 2) + 'px';
+
+                icon.style.position = 'relative';
+                icon.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-code, .floating-icon');
+
+            parallax.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

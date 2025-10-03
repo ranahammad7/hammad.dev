@@ -763,11 +763,223 @@
             font-weight: 600;
         }
 
+/* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 100px 20px 60px;
+            }
 
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .mobile-showcase {
+                order: 1;
+                margin-bottom: 1rem;
+            }
+
+            .iphone-container {
+                width: 240px;
+                height: 490px;
+                padding: 6px;
+                border-radius: 40px;
+            }
+
+            .iphone-screen {
+                border-radius: 34px;
+            }
+
+            .dynamic-island {
+                width: 100px;
+                height: 26px;
+                top: 10px;
+                font-size: 0.6rem;
+            }
+
+            .ios-status-bar {
+                padding: 42px 15px 12px;
+                font-size: 0.75rem;
+            }
+
+            .ios-home-screen {
+                padding: 20px 18px;
+                gap: 15px;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .ios-app-icon {
+                width: 45px;
+                height: 45px;
+                border-radius: 10px;
+                font-size: 1.3rem;
+            }
+
+            .featured-app {
+                width: 105px;
+                height: 105px;
+                border-radius: 22px;
+                font-size: 2.2rem;
+            }
+
+            .featured-app .app-label {
+                font-size: 0.65rem;
+                margin-top: 6px;
+            }
+
+            .ios-dock {
+                bottom: 20px;
+                left: 18px;
+                right: 18px;
+                height: 65px;
+                border-radius: 20px;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .dock-app {
+                width: 42px;
+                height: 42px;
+                border-radius: 9px;
+                font-size: 1.2rem;
+            }
+
+            .floating-elements {
+                display: none !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                width: calc(100% - 40px);
+                padding: 0.8rem 1.2rem;
+                top: 10px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .code-snippet {
+                padding: 1.2rem;
+                font-size: 0.7rem;
+                margin: 2rem 0;
+                overflow-x: auto;
+            }
+
+            .code-snippet::before {
+                top: 0.5rem;
+                right: 0.8rem;
+                font-size: 0.6rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .code-snippet pre {
+                overflow-x: auto;
+                white-space: pre;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .stats-grid,
+            .tech-grid,
+            .app-grid,
+            .contact-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-card,
+            .tech-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .iphone-container {
+                width: 200px;
+                height: 410px;
+            }
+
+            .ios-home-screen {
+                padding: 15px 12px;
+                gap: 12px;
+            }
+
+            .ios-app-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            .featured-app {
+                width: 88px;
+                height: 88px;
+                font-size: 1.8rem;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .code-snippet {
+                font-size: 0.65rem;
+            }
+        }
 
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        /* @media (max-width: 768px) {
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -807,7 +1019,7 @@
             .section-title {
                 font-size: clamp(2rem, 3.5vw, 2.5rem);
             }
-        }
+        } */
 
         /* Animation keyframes */
         @keyframes slideInLeft {
